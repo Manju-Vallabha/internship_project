@@ -1,0 +1,720 @@
+/* General Styling */
+:root {
+  --primary-color: #4caf50; /* A vibrant green for microgreens */
+  --secondary-color: #8bc34a; /* A slightly lighter green */
+  --dark-color: #333;
+  --light-color: #f4f4f4;
+  --text-color: #555;
+  --heading-color: #333;
+  --border-radius: 8px;
+  --padding-section: 60px 0; /* Slightly reduced for better mobile flow */
+  --padding-section-small: 30px 0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: #fff;
+  overflow-x: hidden; /* Prevent horizontal scroll from carousel */
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+a {
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
+ul {
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Montserrat", sans-serif;
+  color: var(--heading-color);
+  margin-bottom: 15px;
+}
+
+h2 {
+  font-size: 2em; /* Adjusted for mobile-first */
+  text-align: center;
+  margin-bottom: 30px; /* Adjusted */
+}
+
+h3 {
+  font-size: 1.6em;
+}
+
+.section-padding {
+  padding: var(--padding-section);
+}
+
+.section-padding-small {
+  padding: var(--padding-section-small);
+}
+
+.section-description {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 40px; /* Adjusted */
+  font-size: 1em; /* Adjusted */
+  line-height: 1.8;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  background: var(--primary-color);
+  color: #fff;
+  padding: 10px 20px; /* Adjusted */
+  border-radius: var(--border-radius);
+  transition: background 0.3s ease;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95em;
+}
+
+.btn:hover {
+  background: var(--secondary-color);
+}
+
+.btn-primary {
+  background: var(--primary-color);
+}
+
+.btn-secondary {
+  background: var(--dark-color);
+  color: #fff;
+}
+
+.btn-secondary:hover {
+  background: #555;
+}
+
+.btn-large {
+  padding: 12px 30px; /* Adjusted */
+  font-size: 1.05em;
+}
+
+/* Header */
+.main-header {
+  background: #fff;
+  padding: 15px 0; /* Adjusted */
+  border-bottom: 1px solid #eee;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.main-header .mobile-header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5em; /* Adjusted for mobile */
+  font-weight: 700;
+  flex-grow: 1; /* Allow logo to take available space */
+  text-align: center; /* Center logo on mobile */
+}
+
+.logo a {
+  color: var(--primary-color);
+}
+
+.header-icons {
+  display: flex;
+  gap: 15px; /* Space between icons */
+}
+
+.icon-btn {
+  color: var(--dark-color);
+  font-size: 1.3em;
+  position: relative;
+}
+
+.icon-btn:hover {
+  color: var(--primary-color);
+}
+
+.cart-count {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: red;
+  color: white;
+  font-size: 0.7em;
+  padding: 2px 6px;
+  border-radius: 50%;
+  font-weight: bold;
+}
+
+/* Hide desktop nav on mobile by default */
+.main-nav {
+  display: none;
+}
+
+/* Image Carousel */
+.image-carousel-section {
+  width: 100%;
+  overflow: hidden; /* Hide overflowing images */
+  position: relative;
+  padding-top: 20px; /* Space from header */
+}
+
+.carousel-container {
+  width: 100%;
+}
+
+.carousel-track {
+  display: flex;
+  /* This animation is defined for both mobile and desktop.
+       It will "auto-scroll" by moving the track.
+       For a truly smooth, continuous loop without a "jump" at the end,
+       you'd typically duplicate the first few images at the end of the track
+       and use JavaScript, or fine-tune the CSS. */
+  animation: scroll-images 40s linear infinite;
+  animation-play-state: running; /* Keep it running by default */
+}
+
+.carousel-track:hover {
+  animation-play-state: paused; /* Pause on hover */
+}
+
+.carousel-track img {
+  min-width: 100%; /* Each image takes full width of container on mobile */
+  height: 300px; /* Fixed height for consistency on mobile */
+  object-fit: cover; /* Cover the area, crop if necessary */
+  border-radius: var(--border-radius);
+  margin: 0 10px; /* Small gap between images */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Keyframe animation for basic right-to-left scroll */
+@keyframes scroll-images {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-100% * 3));
+  } /* Scrolls past 3 images (if 4 total) */
+}
+
+/* Product Main Info */
+.product-main-info {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Added wrapper to keep content centered on mobile while flex-ing on desktop */
+.product-main-info .product-content-wrapper {
+  max-width: 100%; /* Ensures content stays within bounds */
+  margin: 0 auto;
+}
+
+.product-title {
+  font-size: 1.8em; /* Adjusted for mobile */
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+.product-meta {
+  margin-bottom: 20px;
+}
+
+.product-price {
+  font-size: 1.5em;
+  font-weight: 700;
+  color: var(--dark-color);
+}
+
+.product-price .per-unit {
+  font-size: 0.7em;
+  color: var(--text-color);
+  font-weight: normal;
+}
+
+.location-info {
+  font-size: 0.9em;
+  color: var(--text-color);
+  margin-top: 5px;
+}
+
+.location-info .fa-map-marker-alt {
+  color: var(--primary-color);
+  margin-right: 5px;
+}
+
+.product-options {
+  display: flex;
+  flex-direction: column; /* Stack buttons and selector on mobile */
+  gap: 15px;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.quantity-selector label {
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+.quantity-selector select {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: var(--border-radius);
+  font-size: 1em;
+}
+
+.btn-buy-now,
+.btn-add-cart {
+  width: 80%; /* Make buttons wider on mobile */
+  max-width: 300px;
+  padding: 12px 20px; /* Larger tap target */
+  font-size: 1.1em;
+}
+
+.btn-add-cart {
+  background: #607d8b; /* A slate grey for secondary action */
+}
+
+.btn-add-cart:hover {
+  background: #78909c;
+}
+
+/* Product Details Section */
+.product-details .details-content {
+  text-align: left;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.product-details ul {
+  margin-top: 20px;
+  padding-left: 20px;
+}
+
+.product-details ul li {
+  margin-bottom: 10px;
+  position: relative;
+  padding-left: 30px;
+}
+
+.product-details ul li .icon-green {
+  color: var(--primary-color);
+  position: absolute;
+  left: 0;
+  top: 5px;
+  font-size: 1.2em;
+}
+
+/* Nutritional Benefits */
+.bg-light {
+  background-color: var(--light-color);
+}
+
+.nutritional-benefits .benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(200px, 1fr)
+  ); /* Adjusted for more columns on small screens */
+  gap: 20px; /* Reduced gap */
+  text-align: center;
+}
+
+.benefit-card {
+  background: #fff;
+  padding: 25px; /* Adjusted padding */
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Lighter shadow */
+}
+
+.benefit-card h3 {
+  color: var(--primary-color);
+  font-size: 1.2em; /* Adjusted */
+  margin-bottom: 8px;
+}
+
+/* How to Use / Recipes */
+.how-to-use .recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(250px, 1fr)
+  ); /* Adjusted for smaller screens */
+  gap: 20px; /* Reduced gap */
+  text-align: center;
+}
+
+.recipe-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.recipe-card:hover {
+  transform: translateY(-5px);
+}
+
+.recipe-card img {
+  max-width: 100%;
+  height: 150px; /* Adjusted height */
+  object-fit: cover;
+  border-radius: var(--border-radius);
+  margin-bottom: 15px;
+}
+
+.recipe-card h4 {
+  color: var(--primary-color);
+  font-size: 1.1em; /* Adjusted */
+  margin-bottom: 8px;
+}
+
+/* Reviews Section */
+.reviews-section {
+  background-color: #fff;
+}
+
+.reviews-list {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.review-card {
+  background: var(--light-color);
+  padding: 25px;
+  margin-bottom: 20px;
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.reviewer-name {
+  font-weight: 600;
+  color: var(--heading-color);
+  font-size: 1.1em;
+}
+
+.review-rating {
+  color: #ffd700; /* Gold color for stars */
+  font-size: 1.1em;
+}
+
+.review-text {
+  font-style: italic;
+  margin-bottom: 10px;
+  color: var(--text-color);
+}
+
+.review-date {
+  font-size: 0.85em;
+  color: #888;
+}
+
+/* Add a Review Section */
+.add-review-section {
+  background-color: var(--light-color);
+}
+
+.review-form {
+  max-width: 600px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: var(--border-radius);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--heading-color);
+}
+
+.form-group input[type="text"],
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius);
+  font-size: 1em;
+  font-family: "Open Sans", sans-serif;
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+/* Star Rating for Add Review */
+/* Star Rating for Add Review */
+.star-rating {
+  display: inline-block;
+  direction: rtl; /* For right-to-left star selection */
+  unicode-bidi: bidi-override; /* Ensures rtl works consistently */
+}
+
+.star-rating input[type="radio"] {
+  display: none;
+}
+
+.star-rating label {
+  color: #ccc; /* Default star color */
+  font-size: 1.8em;
+  padding: 0 2px; /* Small horizontal padding between stars */
+  cursor: pointer;
+  transition: color 0.2s ease;
+  display: inline-block; /* Keep them inline for horizontal alignment */
+  line-height: 1; /* Helps vertical alignment of stars */
+}
+
+.star-rating input[type="radio"]:checked ~ label {
+  color: #ffd700; /* Gold color for selected stars */
+}
+
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+  color: #ffd700; /* Gold on hover */
+}
+
+/* Photo Upload Button Styling */
+.photo-upload-container {
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+
+.photo-upload-button {
+  display: inline-block;
+  background-color: #6c757d; /* A neutral grey */
+  color: white;
+  padding: 10px 15px;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 0.9em;
+  font-weight: 600;
+}
+
+.photo-upload-button:hover {
+  background-color: #5a6268;
+}
+
+.photo-upload-button i {
+  margin-right: 8px;
+}
+
+.photo-upload-input {
+  display: none; /* Hide the default file input */
+}
+
+/* Optional: Style for file name display after selection (requires JS for full functionality) */
+.file-name-display {
+  margin-top: 10px;
+  font-size: 0.9em;
+  color: #777;
+}
+.review-form .btn {
+  width: auto;
+  padding: 12px 30px;
+  font-size: 1.1em;
+  margin-top: 10px;
+}
+
+/* Footer */
+.main-footer {
+  background: var(--dark-color);
+  color: #fff;
+  padding: 30px 0;
+  text-align: center;
+  border-top: 1px solid #444;
+}
+
+.main-footer .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping on small screens */
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.footer-links li {
+  margin: 5px 15px; /* Adjusted margin */
+}
+
+.footer-links a {
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: var(--primary-color);
+}
+
+/* --- Responsive Design - Desktop Overrides --- */
+@media (min-width: 769px) {
+  /* Tablet and larger screens */
+  .main-header .mobile-header-content {
+    justify-content: space-between;
+    text-align: left;
+  }
+
+  .logo {
+    flex-grow: 0; /* Reset flex-grow for desktop */
+    text-align: left;
+  }
+
+  /* --- Make header icons visible on desktop --- */
+  .header-icons {
+    display: flex; /* Show mobile icons on desktop */
+    order: 3; /* Position them to the right of navigation */
+    margin-left: 20px; /* Add some space */
+  }
+
+  .main-nav {
+    display: block; /* Show desktop nav */
+    flex-grow: 1; /* Allow navigation to take available space */
+  }
+
+  .main-nav ul {
+    display: flex;
+    justify-content: center; /* Center the nav links */
+    align-items: center;
+  }
+
+  .main-nav ul li {
+    margin: 0 15px; /* Adjust spacing between nav items */
+  }
+
+  h2 {
+    font-size: 2.5em; /* Restore desktop size */
+  }
+
+  .desktop-only {
+    display: block; /* Ensure desktop specific elements are visible */
+  }
+
+  /* Desktop Product Hero Layout */
+  .product-hero-desktop-wrapper {
+    display: flex;
+    align-items: flex-start; /* Align items to the top */
+    gap: 40px; /* Space between image and details */
+    padding: 40px 20px; /* Padding for the main product section */
+  }
+
+  .image-carousel-section {
+    flex: 3; /* Image section takes more space, e.g., 60% */
+    padding-top: 0; /* Remove top padding from mobile */
+    max-width: 60%; /* Limit max width */
+  }
+
+  .carousel-track img {
+    height: 400px; /* Adjusted height for desktop */
+    min-width: calc(100% / 2); /* Show two images per view on larger screens */
+    margin: 0 10px; /* Gap between images */
+  }
+
+  /* --- Keyframe animation for continuous auto-scroll on desktop --- */
+  @keyframes scroll-images {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-100% * (4 / 2)));
+    } /* If 4 images, and 2 shown, scrolls by 2 images */
+    /* To make it appear more continuous, you would usually duplicate images in HTML.
+           For example, if you have A, B, C, D, your track would be A, B, C, D, A, B.
+           Then scroll until the "real" A, B is visible. This CSS handles basic scrolling. */
+  }
+
+  .product-main-info {
+    flex: 2; /* Details section takes less space, e.g., 40% */
+    text-align: left; /* Align text to the left */
+    margin-top: 0; /* Remove top margin from mobile */
+    padding-top: 0; /* Remove padding from mobile section-padding-small */
+  }
+
+  .product-main-info .product-content-wrapper {
+    margin: 0; /* Remove auto margin */
+  }
+
+  .product-title {
+    font-size: 2.8em; /* Larger title for desktop */
+    text-align: left; /* Align title left */
+  }
+
+  .product-meta {
+    text-align: left;
+  }
+
+  .product-options {
+    flex-direction: row; /* Layout buttons/selector in a row */
+    justify-content: flex-start; /* Align to the left */
+    width: auto;
+    gap: 10px; /* Reduced gap for horizontal layout */
+  }
+
+  .quantity-selector {
+    display: flex; /* Align label and select horizontally */
+    align-items: center;
+  }
+
+  .btn-buy-now,
+  .btn-add-cart {
+    width: auto; /* Reset width for desktop */
+    max-width: none;
+  }
+
+  .nutritional-benefits .benefits-grid,
+  .how-to-use .recipe-grid {
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(280px, 1fr)
+    ); /* More standard grid for desktop */
+    gap: 30px; /* Restore standard gap */
+  }
+}
+
+@media (min-width: 992px) {
+  /* Larger desktop screens */
+  .product-hero-desktop-wrapper {
+    gap: 60px; /* More space on larger screens */
+  }
+  .image-carousel-section {
+    flex: 2; /* Adjust flex ratios if needed */
+    max-width: 50%;
+  }
+  .product-main-info {
+    flex: 1;
+  }
+}
